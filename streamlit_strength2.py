@@ -15,10 +15,10 @@ st.set_page_config(
 def load_models():
     """Loads the pickled machine learning models."""
     try:
-        with open('D:\cem mills files/linear_model.pkl', 'rb') as f:
+        with open('linear_model.pkl', 'rb') as f:
             linear_model = pickle.load(f)
         # Corrected filename to match the creation script
-        with open('D:\cem mills files/RF_model.pkl', 'rb') as f:
+        with open('RF_model.pkl', 'rb') as f:
             RF_model = pickle.load(f)
         return linear_model, RF_model
     except FileNotFoundError:
