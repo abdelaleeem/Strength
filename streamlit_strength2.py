@@ -12,17 +12,19 @@ st.set_page_config(
 
 # --- Load Models ---s
 @st.cache_resource
+from pathlib import Path
+
 def load_models():
     """Loads the pickled machine learning models."""
     try:
-        with open('linear_model.pkl', 'rb') as f:
+        model_dir = Path(__file__).parent
+        with open(model_dir / 'linear_model.pkl', 'rb') as f:
             linear_model = pickle.load(f)
-        # Corrected filename to match the creation script
-        with open('RF_model.pkl', 'rb') as f:
+        with open(model_dir / 'RF_model.pkl', 'rb') as f:
             RF_model = pickle.load(f)
         return linear_model, RF_model
     except FileNotFoundError:
-        st.error("Model files not found. Please run the `create_models.py` script first.")
+        st.error("Model files not found. Please ensure 'models/' folder contains the pickle files.")
         return None, None
 
 linear_model, RF_model = load_models()
