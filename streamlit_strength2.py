@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-
+from pathlib import Path
 # --- Page Configuration ---
 st.set_page_config(
     page_title="28 days strength Prediction App",
@@ -12,8 +12,6 @@ st.set_page_config(
 
 # --- Load Models ---s
 @st.cache_resource
-from pathlib import Path
-
 def load_models():
     """Loads the pickled machine learning models."""
     try:
